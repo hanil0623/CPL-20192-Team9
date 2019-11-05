@@ -40,7 +40,7 @@ function call_data(name)
 	//call hash table data 
 	var hash_table;
 	var pew=0;
-// **이부분 Refine이 없기 때문에 주석처리mongodb.connect.models.Refine_EdisonSetData.find({'scienceAppName':name},function(err,Refine_EdisonSetData){
+// **PSH: 이부분 Refine이 없기 때문에 주석처리mongodb.connect.models.Refine_EdisonSetData.find({'scienceAppName':name},function(err,Refine_EdisonSetData){
 		//console.log(Refine_EdisonSetData);
 		//hash_table=Refine_EdisonSetData[0].parameter;
 		//console.log(hash_table);
@@ -74,7 +74,9 @@ function call_data(name)
 				//issue mongodb가 숫자가 첫글자일경우 인식 못함...
 				// if(name=='2D_Comp_P') name='Comp_P_2D'
 				// else if(name=='2D_Incomp_P') name='Incomp_P_2D'
-				Model=mongodb.mongo.model('Latest1_'+name,Schema);
+				
+				/* PSH: 모델 재정의 에러 때문에 주석처리해놨음 */
+//				Model=mongodb.mongo.model('Latest1_'+name,Schema);
 				console.log(Model);
 			}
 			//parse
@@ -197,6 +199,8 @@ function parse_jobdata(jobdata,name,hash_table)
 		//console.log(data[count-1]);
 	}
 	//use hash table get latest info
+	
+//	console.log("length: "+data.length+hash_table.length);
 	
 	for(let i=0;i<data.length;i++)
 	{
