@@ -49,7 +49,7 @@ db.once('open', function callback () {
     
     app.use('/spa',require('./apps/api/api_bunch'));
 //    app.use(require('./apps/data_control/load_edison')); // express 기능이용 load_edison코드 전체실행 async ->sync 콜백
-    app.use(require('./apps/data_control/parser')); //excute parser func  
+//    app.use(require('./apps/data_control/parser')); //excute parser func  
     //app.use('~~'.require('~~~'));
 	  //users 들어오는 요청에대해 /api/user 을 사용한다.,+ index.js 의 router 클래스를 미들웨어화 시킨것을 사용하는것
     //app.use ==> 두번째 인자를 사용한다.라는 의미 만약 인자가 두개일 경우 없을땐 첫번째 인자를
@@ -63,7 +63,7 @@ app.use('/',express.static('src'));
 // //call view part and set view engine
 app.locals.pretty=true; //jade html code pretty 줄바꿈도해줌
 app.set('views','./views'); //views란 템플릿이 있는 디렉토리 jade 파일은 여기에 있을거임
-app.set('view engine','jade'); //view engine 으로 jade 란 템플릿 사용 
+app.set('view engine','ejs'); //view engine 으로 jade 란 템플릿 사용 
 
 
 module.exports={
