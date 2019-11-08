@@ -6,6 +6,9 @@ const bodyParser=require('body-parser'); //for post method body parsing
 const ip='127.0.0.1';
 const port=3000;
 
+var cors = require('cors');
+app.use(cors());
+
 app.listen(port,ip, () => {
   console.log('ip : '+ip+' port number : '+port);
   console.log('DKE LAB SPA Server'); 
@@ -38,7 +41,10 @@ db.once('open', function callback () {
     EdisonSetModel=mongo.model("EdisonSetData",EdisonSetSchema);
     Refine_EdisonSetModel=mongo.model("Refine_EdisonSetData",Refine_EdisonSetSchema);
 	  Input_EdisonModel=mongo.model("Input_EdisonData",Input_EdisonSchema);
-    
+
+	
+		/* PSH: parser.js를 실행시키기 위해선 app.js 스키마 정의를 생략해야함(스키마 중복 재정의 오류 발생) */
+
     for(let i=0;i<name.length;i++){
       let latest1_EdisonModel=new Array();
       //eval("name["+i+"]=Latest1_"+name[i]+"EdisonModel");
@@ -46,7 +52,7 @@ db.once('open', function callback () {
     }
     
 	}());
-    
+ 
     app.use('/spa',require('./apps/api/api_bunch'));
 //    app.use(require('./apps/data_control/load_edison')); // express 기능이용 load_edison코드 전체실행 async ->sync 콜백
 //    app.use(require('./apps/data_control/parser')); //excute parser func  
@@ -64,6 +70,7 @@ app.use('/',express.static('src'));
 app.locals.pretty=true; //jade html code pretty 줄바꿈도해줌
 app.set('views','./views'); //views란 템플릿이 있는 디렉토리 jade 파일은 여기에 있을거임
 app.set('view engine','ejs'); //view engine 으로 jade 란 템플릿 사용 
+
 
 
 module.exports={

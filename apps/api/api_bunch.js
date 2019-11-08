@@ -6,6 +6,13 @@ const fs = require("fs");
 var child_process=require('child_process');
 var exec=child_process.exec;
 
+/*
+Access-Control-Allow-Origin:*;
+Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS;
+Access-Control-Max-Age: 3600;
+Access-Control-Allow-Headers: Origin,Accept,X-Requested-With,Content-Type,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization;
+*/
+
 //router에 의해 바로 경로가 main folder기준으로 잡힘 시작 
 //api call ip:port/spa/~~~
 (function Test()
@@ -85,11 +92,30 @@ router.get('/clusters',function(req,res){
 
 //get scienceAppName -from cluster
 router.get('/scienceAppName/:cluster_name',function(req,res){
-  mongodb.connect.models.Refine_EdisonSetData.find({'cluster':req.params.cluster_name},function(err,Refine_EdisonSetData){
+//  mongodb.connect.models.Refine_EdisonSetData.find({'cluster':req.params.cluster_name},function(err,Refine_EdisonSetData){
     let scienceAppName_set=new Set();
     let array;
-    
+   let output;
     console.log(req.params.cluster_name);
+	
+	switch(req.params.cluster_name) {
+		case 'EDISON-NANO':
+			array=['acuteSTMtip','BAND_DOSLab','coulombdart','gravityslingshot','LCAODFTLab','PhaseDiagramSW','pianostring','roundSTMtip','UTB_FET','WaveSimulation'];
+			break;
+		case 'EDISON-CFD':
+			array=['2D_Comp_P','2D_Incomp_P','BAND_DOSLab','gravityslingshot','KFLOW_EDISON_4','KFLOW_EDISON_5','mc_nvt','pianostring','SNUFOAM_ShipRes'];
+			break;
+		case 'EDISON-TEST':
+			array=['acuteSTMtip','KFLOW_EDISON_4','KFLOW_EDISON_5'];
+			break;
+		case 'EDISON-CHEM':
+			array=['dmd_pol','eklgcmc2','mc_nvt'];
+			break;
+		case 'EDISON-CMED':
+			array=['PKsimEV','Single_Cell_Electrophysiology'];
+			break;
+	}
+	/*
     if(err)
     {
       console.log(err);
@@ -100,10 +126,11 @@ router.get('/scienceAppName/:cluster_name',function(req,res){
     scienceAppName_set.add(Refine_EdisonSetData[i].scienceAppName);
     }
     array=Array.from(scienceAppName_set);
-    console.log('call get scienceAppName api');
+	*/
+	console.log('call get scienceAppName api');
     console.log(array);
     res.json(array);
-  });
+ // });
 });
 
 
@@ -172,8 +199,11 @@ router.get('/predictResult/:cluster_name/:scienceAppName/parameters_values',func
 router.get('/statistics',function(req,res){
   mongodb.connect.models.Refine_EdisonSetData.find(function(err,Refine_EdisonSetData){
     let cluster_set=new Set();
-    let array;
     console.log('statistics 라우팅 시작');
+
+	 let Cluster_list = ['EDISON-NANO','EDISON-CFD','EDISON-TEST','EDISON-CHEM','EDISON-CMED'];
+	  
+	/*
     if(err)
     {
       console.log(err);
@@ -184,8 +214,9 @@ router.get('/statistics',function(req,res){
     cluster_set.add(Refine_EdisonSetData[i].cluster);
     }
     array=Array.from(cluster_set);
-    console.log(array);
-    res.render('statistics',{cluster:array});   
+	*/  
+	console.log(Cluster_list);
+    res.render('statistics',{cluster:Cluster_list});   
   });
   //res.render('predict');
 });

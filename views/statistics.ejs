@@ -90,6 +90,10 @@ a.dropdown-item(href='blank.html') Blank Page-->
                         <p>
                             <select id="cluster_box">
                                 <option value="null" selected="">--choice--</option>
+								
+								<% for(var i=0; i<cluster.length; i++) { %>
+								<option value=<%=cluster[i]%>><%=cluster[i]%></option>
+								<% } %>
                             </select>
                             <button type="button" name="next1" onclick="getScienceAppName()" value="Next" class="btn btn-primary">Next</button>
                             <button type="button" name="back1" onclick="reset_scienceappname_box()" value="Back" class="btn btn-primary">Back</button>

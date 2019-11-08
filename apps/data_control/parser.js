@@ -40,7 +40,9 @@ function call_data(name)
 	//call hash table data 
 	var hash_table;
 	var pew=0;
-// **PSH: 이부분 Refine이 없기 때문에 주석처리mongodb.connect.models.Refine_EdisonSetData.find({'scienceAppName':name},function(err,Refine_EdisonSetData){
+
+	/*PSH: 이부분 Refine 데이터에 대한 정보가 없기 때문에 주석처리 */
+//	mongodb.connect.models.Refine_EdisonSetData.find({'scienceAppName':name},function(err,Refine_EdisonSetData){
 		//console.log(Refine_EdisonSetData);
 		//hash_table=Refine_EdisonSetData[0].parameter;
 		//console.log(hash_table);
@@ -76,7 +78,7 @@ function call_data(name)
 				// else if(name=='2D_Incomp_P') name='Incomp_P_2D'
 				
 				/* PSH: 모델 재정의 에러 때문에 주석처리해놨음 */
-//				Model=mongodb.mongo.model('Latest1_'+name,Schema);
+				Model=mongodb.mongo.model('Latest1_'+name,Schema);
 				console.log(Model);
 			}
 			//parse
@@ -98,7 +100,7 @@ function call_data(name)
 				console.log('hmm '+name+' '+data+' '+comp);
 				comp=data;
 			}*/
-/*
+
 			let parameter=new Array();
 			let values=new Array();
 			let parameter_counter=0,values_couter=0;
@@ -124,9 +126,9 @@ function call_data(name)
 			// {
 			// 	console.log(save_data);
 			// }
-*/
+
 		}
-		console.log(EdisonData.length+" "+pew);
+//		console.log(EdisonData.length+" "+pew);
 		console.log(name+" save complete "+ccount);
 		ccount=ccount+1;
 	});
@@ -144,7 +146,6 @@ function eqSet(as, bs) {
 
 function parse_jobdata(jobdata,name,hash_table)
 {	
-	console.log(hash_table);
 	let hash_table_set=new Set();
 	let jobdata_param_set=new Set();
 	let data=new Array();; //짝=param name 홀=param variable
@@ -206,16 +207,18 @@ function parse_jobdata(jobdata,name,hash_table)
 	{
 		if(i%2==0) jobdata_param_set.add(data[i]);
 	}
-	for(let i=0;i<hash_table.length;i++)
-	{
-		hash_table_set.add(hash_table[i]);
-	}
+	
+	/* PSH: hash table에 대한 정보가 없기때문에 주석처리 해놨음 */
+//	for(let i=0;i<hash_table.length;i++)
+//	{
+//		hash_table_set.add(hash_table[i]);
+//	}
 
-	if(eqSet(hash_table_set,jobdata_param_set)==0)
-	{
-		//console.log('not match');
-		return 0;
-	}
+//	if(eqSet(hash_table_set,jobdata_param_set)==0)
+//	{
+//		//console.log('not match');
+//		return 0;
+//	}
 	//console.log(temp);
 	//return data.length/2;
 	return data;

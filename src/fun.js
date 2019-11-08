@@ -26,7 +26,7 @@ function getClusterName () {
 function getScienceAppName () { 
     var e = document.getElementById("cluster_box");
     var cluster_name = e.options[e.selectedIndex].value;
-    
+//    alert(cluster_name + ' clicked!');
     if(cluster_name=="")
     {
         alert('choose cluster');
