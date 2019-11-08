@@ -39,8 +39,9 @@ db.once('open', function callback () {
 	 // complie our schema in("EdisonData",EdisonSchema)
     EdisonModel=mongo.model("EdisonData",EdisonSchema);
     EdisonSetModel=mongo.model("EdisonSetData",EdisonSetSchema);
-    Refine_EdisonSetModel=mongo.model("Refine_EdisonSetData",Refine_EdisonSetSchema);
-	  Input_EdisonModel=mongo.model("Input_EdisonData",Input_EdisonSchema);
+   /* PSH: Refine_EdisonSetModel도 parser.js를 실행실때 재정의 오류를 피하기 위해 주석이 필요함 */
+	Refine_EdisonSetModel=mongo.model("Refine_EdisonSetData",Refine_EdisonSetSchema);
+	Input_EdisonModel=mongo.model("Input_EdisonData",Input_EdisonSchema);
 
 	
 		/* PSH: parser.js를 실행시키기 위해선 app.js 스키마 정의를 생략해야함(스키마 중복 재정의 오류 발생) */
@@ -50,6 +51,7 @@ db.once('open', function callback () {
       //eval("name["+i+"]=Latest1_"+name[i]+"EdisonModel");
       latest1_EdisonModel[i]=mongo.model('Latest1_'+name[i],Latest1_EdisonSchema);
     }
+
     
 	}());
  

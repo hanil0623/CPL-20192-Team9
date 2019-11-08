@@ -7,8 +7,22 @@ const mongodb=require('../../app');
 var name=['LCAODFTLab','2D_Comp_P','2D_Incomp_P','KFLOW_EDISON_4','KFLOW_EDISON_5','SNUFOAM_ShipRes','dmd_pol','eklgcmc2','mc_nvt','PKsimEV','Single_Cell_Electrophysiology','acuteSTMtip','BAND_DOSLab','coulombdart','gravityslingshot','PhaseDiagramSW','pianostring','roundSTMtip','UTB_FET','WaveSimulation'];
 //var name=['LCAODFTLab','2D_Comp_P','2D_Incomp_P','KFLOW_EDISON_4','KFLOW_EDISON_5','SNUFOAM_ShipRes','dmd_pol','eklgcmc2','mc_nvt','Single_Cell_Electrophysiology','acuteSTMtip','BAND_DOSLab','coulombdart','gravityslingshot','PhaseDiagramSW','pianostring','roundSTMtip','UTB_FET','WaveSimulation'];
 //var comp;
+
+/* PSH: 이부분은 Refine_EdisonSetDatas 모델에 대한 정의 */
 var Schema,Model;
 var ccount=1;
+
+var Refine_Schema;
+	Refine_Schema = mongodb.mongo.Schema({
+		cluster: String,
+    	scienceAppName : String,
+    	simulationUuid: String,
+    	jobExecTime : String,
+    	jobStatus : String,
+    	parameter : Array,
+    	values : Array	
+	});
+var Refine_Model=mongodb.mongo.model('Refine_EdisonSetData',Refine_Schema);
 //call data -> parse -> (make schema , make model just once by sciencAppName) -> save parse data
 (function EdisonData_refine_func()
 {	
@@ -50,6 +64,7 @@ function call_data(name)
 	//for data set (making hash table)
 	//mongodb.connect.models.EdisonSetData.find({'scienceAppName':name},function(err,EdisonData){
 	//for datas all
+	
 	mongodb.connect.models.EdisonData.find({'scienceAppName':name},function(err,EdisonData){
 		if(err)
 		{
@@ -58,8 +73,10 @@ function call_data(name)
 		}
 
 //		console.log('call data '+name);
-		for(let i=0;i<5;i++)
-		//for(let i=0;i<EdisonData.length;i++)
+		/* PSH: Refine_EdisonSetData 구축시 반복문 한번만 돌아야함 */
+		for(let i=0;i<1;i++)
+		/* PSH: Latest1_scienceAppName 구축시 반복문 전부 돌아야함 */
+//		for(let i=0;i<EdisonData.length;i++)
 		{
 			var Schema,Model;
 			if(i==0) //make schema and compile model
@@ -77,9 +94,9 @@ function call_data(name)
 				// if(name=='2D_Comp_P') name='Comp_P_2D'
 				// else if(name=='2D_Incomp_P') name='Incomp_P_2D'
 				
-				/* PSH: 모델 재정의 에러 때문에 주석처리해놨음 */
-				Model=mongodb.mongo.model('Latest1_'+name,Schema);
-				console.log(Model);
+				/* PSH: 모델 재정의 에러 때문에 주석처리해놨음 Latest1 테이블 구성시 이부분 주석 해제 필요*/
+//				Model=mongodb.mongo.model('Latest1_'+name,Schema);
+//				console.log(Model);
 			}
 			//parse
 			
@@ -112,7 +129,10 @@ function call_data(name)
 			}
 			//console.dir(mongodb);
 			//save
-			let save_data=new Model();
+			/* PSH: new Model(); Latest1 컬렉션 구성
+					new Refine_Model(); RefineSetDatas 컬렉션 구성 */
+//			let save_data=new Model();
+			let save_data=new Refine_Model();
 			save_data.cluster=EdisonData[i].cluster;
 			save_data.scienceAppName=EdisonData[i].scienceAppName;
 			save_data.simulationUuid=EdisonData[i].simulationUuid;
