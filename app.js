@@ -69,9 +69,9 @@ app.use(bodyParser.urlencoded({ extended: true })); //for parsing application/x-
 app.use('/',express.static('src'));
 
 // //call view part and set view engine
-app.locals.pretty=true; //jade html code pretty 줄바꿈도해줌
-app.set('views','./views'); //views란 템플릿이 있는 디렉토리 jade 파일은 여기에 있을거임
-app.set('view engine','ejs'); //view engine 으로 jade 란 템플릿 사용 
+app.locals.pretty=true; //ejs html code pretty 줄바꿈도해줌
+app.set('views','./views'); //views란 템플릿이 있는 디렉토리 ejs 파일은 여기에 있을거임
+app.set('view engine','ejs'); //view engine 으로 ejs 란 템플릿 사용 
 
 
 
