@@ -5,7 +5,8 @@ for(i in 1:length(args)){
 }
 
  
-source("./apps/api/test.R")
+source("./apps/api/running_r_code.R")
+#source("./apps/api/test.R")
 #source("./log_a_b.R")
  
 val <- test_r(var_list)

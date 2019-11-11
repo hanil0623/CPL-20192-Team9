@@ -188,8 +188,13 @@ router.get('/predictResult/:cluster_name/:scienceAppName/parameters_values',func
     console.log(stdout);
     let endTime=new Date().getTime();
     let resTime=(endTime-startTime)/1000;
-
-    res.json(stdout+' Time : '+resTime);
+	
+	let splited_stdout = stdout.split(' ');
+	let predicted_exec_time = splited_stdout[0];
+	let average_error = splited_stdout[1];
+	  
+	res.json('예상 실행시간: '+predicted_exec_time+'ms\n평균 오차: '+average_error+'ms');
+    //res.json(stdout)//+' Time : '+resTime);
   });
 
   
