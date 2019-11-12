@@ -46,6 +46,7 @@ router.get('/test/:a/:b',function(req,res){
 //predict page  = Job Completion Time Estimation
 router.get('/predict',function(req,res){
   mongodb.connect.models.Refine_EdisonSetData.find(function(err,Refine_EdisonSetData){
+	  /*
     let cluster_set=new Set();
     let array;
     
@@ -60,8 +61,10 @@ router.get('/predict',function(req,res){
     }
     array=Array.from(cluster_set);
     console.log(array);
-    res.render('predict',{cluster:array});   
+    res.render('predict',{cluster:array});  */
   });
+	let Cluster_list = ['EDISON-NANO','EDISON-CFD','EDISON-TEST','EDISON-CHEM','EDISON-CMED'];
+	res.render('predict',{cluster:Cluster_list});  
   //res.render('predict');
 });
 //body -- poset params -- get
@@ -178,7 +181,7 @@ router.get('/predictResult/:cluster_name/:scienceAppName/parameters_values',func
     node2r_values=node2r_values.concat(req.query.var[i]+' ');
   }
   //var cmd='Rscript ./apps/api/log_wrapper.R '+req.query.var[0].toString()+' '+req.query.var[1].toString();
-  var cmd='Rscript ./apps/api/wrapper.R '+node2r_values;
+  var cmd='Rscript ./apps/api/wrapper.R '+req.params.scienceAppName+" "+node2r_values;
   console.log(cmd);
 
   exec(cmd,(error,stdout,stderr)=>{
