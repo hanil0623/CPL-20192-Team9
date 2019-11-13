@@ -117,6 +117,9 @@ router.get('/scienceAppName/:cluster_name',function(req,res){
 		case 'EDISON-CMED':
 			array=['PKsimEV','Single_Cell_Electrophysiology'];
 			break;
+		default:
+			array=[];
+			break;
 	}
 	/*
     if(err)
