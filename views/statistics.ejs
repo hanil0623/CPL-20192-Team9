@@ -32,6 +32,7 @@
         <link href="/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
         <!-- Custom styles for this template-->
         <link href="/css/sb-admin.css" rel="stylesheet">
+		<link href="/css/mycss.css" rel="stylesheet">
     </head>
 
     <body id="page-top">
@@ -83,37 +84,42 @@ a.dropdown-item(href='blank.html') Blank Page-->
                     </ol>
                 </div>
                 <!-- Body-->
+				
                 <div class="container-fluid">
-                    <div class="cluster-box">
+                    <div class="cluster-box mybox" style="float: left; width:50%;">
+						<br>
                         <p class="h2">Cluster Box</p>
                         <br>
                         <p>
-                            <select id="cluster_box">
+                            <select id="cluster_box" onchange="getScienceAppName()">
                                 <option value="null" selected="">--choice--</option>
 								
 								<% for(var i=0; i<cluster.length; i++) { %>
 								<option value=<%=cluster[i]%>><%=cluster[i]%></option>
 								<% } %>
                             </select>
+							<!--
                             <button type="button" name="next1" onclick="getScienceAppName()" value="Next" class="btn btn-primary">Next</button>
-                            <button type="button" name="back1" onclick="reset_scienceappname_box()" value="Back" class="btn btn-primary">Back</button>
+                            <button type="button" name="back1" onclick="reset_scienceappname_box()" value="Back" class="btn btn-primary">Back</button>-->
+							<br>
                         </p>
                     </div>
-                    <div class="science-app-name-box">
-                        <div class="card mb-3"></div>
+                    <div class="science-app-name-box mybox box-line" style="float: left; width:50%;">
+						<br>
                         <p class="h2">Science App Name Box</p>
                         <br>
                         <p>
-                            <select id="scienceappname_box">
+                            <select id="scienceappname_box" onchange="getResult_statistics()">
                                 <option vaule="null" selected="">--choice--</option>
                             </select>
+							<!--
                             <button type="button" name="next2" onclick="getResult_statistics()" value="Next" class="btn btn-primary">Next</button>
-                            <button type="button" name="back2" onclick="reset_parameter_table()" value="Back" class="btn btn-primary">Back</button>
-                            <br>
+                            <button type="button" name="back2" onclick="reset_parameter_table()" value="Back" class="btn btn-primary">Back</button>-->
                             <br>
                         </p>
                     </div>
-                    <p>
+					<p></p>
+					<p>
                         <div class="card mb-3"></div>
                         <div class="card-header">
                             <i class="fas fa-table">Parameter Rank Top
