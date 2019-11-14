@@ -45,6 +45,7 @@ router.get('/test/:a/:b',function(req,res){
 });
 //predict page  = Job Completion Time Estimation
 router.get('/predict',function(req,res){
+	console.log('/predict 라우팅 시작');
   mongodb.connect.models.Refine_EdisonSetData.find(function(err,Refine_EdisonSetData){
 	  /*
     let cluster_set=new Set();
@@ -87,7 +88,7 @@ router.get('/clusters',function(req,res){
     }
     array=Array.from(cluster_set);
     console.log('call get cluster name api');
-    console.log(array);
+    //console.log(array);
     //res.render('predict',{cluster:array});
     res.json(array);
   });
@@ -99,7 +100,7 @@ router.get('/scienceAppName/:cluster_name',function(req,res){
     let scienceAppName_set=new Set();
     let array;
    let output;
-    console.log(req.params.cluster_name);
+    //console.log(req.params.cluster_name);
 	
 	switch(req.params.cluster_name) {
 		case 'EDISON-NANO':
@@ -134,7 +135,7 @@ router.get('/scienceAppName/:cluster_name',function(req,res){
     array=Array.from(scienceAppName_set);
 	*/
 	console.log('call get scienceAppName api');
-    console.log(array);
+    //console.log(array);
     res.json(array);
  // });
 });
@@ -158,7 +159,7 @@ router.get('/parameter/:cluster_name/:scienceAppName',function(req,res){
     }
     array=Array.from(param_set);
     console.log('call get parameter api');
-    console.log(array);
+    //console.log(array);
     res.json(array);
   });
 });
@@ -197,9 +198,15 @@ router.get('/predictResult/:cluster_name/:scienceAppName/parameters_values',func
 	
 	let splited_stdout = stdout.split(' ');
 	let predicted_exec_time = splited_stdout[0];
+	predicted_exec_time = parseFloat(predicted_exec_time);
+	predicted_exec_time = predicted_exec_time.toFixed(2);
 	let average_error = splited_stdout[1];
+	average_error = parseFloat(average_error);
+	average_error = average_error.toFixed(2);
 	  
-	res.json('예상 실행시간: '+predicted_exec_time+'ms\n평균 오차: '+average_error+'ms');
+	  console.log(predicted_exec_time+"  "+average_error);
+	  
+	res.json('예상 실행시간: '+predicted_exec_time+'ms\n평균 오차: '+average_error+'%');
     //res.json(stdout)//+' Time : '+resTime);
   });
 
@@ -210,7 +217,7 @@ router.get('/predictResult/:cluster_name/:scienceAppName/parameters_values',func
 router.get('/statistics',function(req,res){
   mongodb.connect.models.Refine_EdisonSetData.find(function(err,Refine_EdisonSetData){
     let cluster_set=new Set();
-    console.log('statistics 라우팅 시작');
+    console.log('/statistics 라우팅 시작');
 
 	 let Cluster_list = ['EDISON-NANO','EDISON-CFD','EDISON-TEST','EDISON-CHEM','EDISON-CMED'];
 	  
@@ -226,7 +233,7 @@ router.get('/statistics',function(req,res){
     }
     array=Array.from(cluster_set);
 	*/  
-	console.log(Cluster_list);
+	//console.log(Cluster_list);
     res.render('statistics',{cluster:Cluster_list});   
   });
   //res.render('predict');

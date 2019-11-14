@@ -67,7 +67,7 @@ function getParameter () {
     ///cluster/:cluster_name/:scienceAppName
     if(cluster_name=="" || scienceappname_name=="")
     {
-        alert('choose cluster and scienceappname name');
+        //alert('choose cluster and scienceappname name');
     }
     else
     {
@@ -146,7 +146,7 @@ function getResult_statistics() {
     ///cluster/:cluster_name/:scienceAppName
     if(cluster_name=="" || scienceappname_name=="")
     {
-        alert('choose cluster and scienceappname name');
+        //alert('choose cluster and scienceappname name');
     }
     else
     {
