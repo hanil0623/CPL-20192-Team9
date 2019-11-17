@@ -25,8 +25,14 @@ Access-Control-Allow-Headers: Origin,Accept,X-Requested-With,Content-Type,Access
 
 //main page
 router.get('/',function(req,res){
-  res.render('main');
+  res.render('main2');
 });
+router.get('/imgs', function(req, res){
+    fs.readFile('D:\CPL-20192-Team9\images\img1.jpg', function(err, data){
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        res.end(data);
+    })
+})
 router.get('/test/:a/:b',function(req,res){
    var a=req.params.a;
    var b=req.params.b;
