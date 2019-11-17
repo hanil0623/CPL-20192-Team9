@@ -36,46 +36,19 @@
     </head>
 
     <body id="page-top">
-        <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-            <a href="/spa" class="navbar-brand mr-1">SPA Framework</a>
-            <button id="sidebarToggle" href="#" class="btn btn-link btn-sm text-white order-1 order-sm-0">
-                <i class="fas fa-bars"></i>
-            </button>
+        <nav class="navbar navbar-expand navbar-dark bg-light static-top" style="height:90px">
+            <a href="/spa" class="navbar-brand col-lg-3 mr-2" style="color:black">
+            <div>
+             <img src="/img/logo.png">
+            </div>
+            </a>
+            <div class="navbar-brand col-lg-3">
+                <a href="/spa/predict" class="dropdown-item">Estimation</a>
+            </div>
+            <div class="navbar-brand col-lg-3">
+                <a href="/spa/statistics" class="dropdown-item">Param Statics</a>
+            </div>
         </nav>
-        <div id="wrapper">
-            <!-- Sidebar-->
-            <ul class="sidebar navbar-nav">
-                <li class="nav-item active">
-                    <a href="/spa" class="nav-link">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-                <!-- Content no list modeli.nav-item
-  a.nav-link(href='/spa/predict')
-    i.fas.fa-fw.fa-tachometer-alt
-    span Time Estimation
-li.nav-item
-  a.nav-link(href='/spa/statistics')
-    i.fas.fa-fw.fa-table
-    span Param Statistics-->
-                <!-- Content list mode -->
-                <li class="nav-item dropdown">
-                    <a id="pagesDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Services</span>
-                    </a>
-                    <div aria-labelledby="pagesDropdown" class="dropdown-menu">
-                        <!-- h6.dropdown-header Login Screens:-->
-                        <a href="/spa/predict" class="dropdown-item">Estimation</a>
-                        <a href="/spa/statistics" class="dropdown-item">Param Statics</a>
-                        <!-- divide line.dropdown-divider
-h6.dropdown-header Other Pages:
-a.dropdown-item(href='404.html') 404 Page
-a.dropdown-item(href='blank.html') Blank Page-->
-                    </div>
-                </li>
-            </ul>
             <div id="content-wrapper">
                 <div class="container-fluid">
                     <!-- Breadcrumbs-->

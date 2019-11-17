@@ -4,7 +4,7 @@ const express = require('express');
 const app = express();
 const bodyParser=require('body-parser'); //for post method body parsing
 const ip='127.0.0.1';
-const port=3000;
+const port=50004;
 
 var cors = require('cors');
 app.use(cors());
