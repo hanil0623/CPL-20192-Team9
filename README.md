@@ -30,6 +30,10 @@
 + Deep Learning
 + Machine Learning
 
+# Milestone
++ 11/17 : UI 화면 교체 (views/main or main2.ejs 골라 사용 가능)
+![Alt text](/docs/UI_Change.png "UI_Change")
+
 # Acknowledge
 [DKE Lab@Kyoungpook National University](https://sites.google.com/view/dkelab)
 
