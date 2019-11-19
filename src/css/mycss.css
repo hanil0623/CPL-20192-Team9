@@ -14,14 +14,32 @@ html,body {
 }*/
 
 #main-background {
-	width:100%;height:100%;
+	width:100vw;height:100vh;
 	background-image: url('/img/img1.jpg');
-	background-size:contain;
+	background-size:cover;
 	background-repeat:no-repeat;
 	position: absolute;
 	border: 50px;
 }
 
+.my-menu {
+	background-color: inherit;
+	border: none;
+	padding: 18px 28px;
+  text-align: center;
+  position: relative;
+  font-size: 20px;
+  text-decoration: none;
+  color: black;
+  transition: all 0.2s;
+}
+.my-menu:active {
+	border:none;
+	outline:none;
+}
+.my-menu:hover {
+  color: red;  
+}
 div.main-text-wrapper {
 	width: inherit; height: 100%;
 	padding: 10% 0px;
@@ -42,6 +60,9 @@ div.main-text-kor {
 	font-size:25px;
 	font-family:NotoSansCJKkr
 }
+
+.sticky-footer {
+    width: 100vw; height: 100vh;
 
 .my-menu {
 	background-color: inherit;
