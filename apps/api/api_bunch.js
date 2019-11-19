@@ -25,7 +25,7 @@ Access-Control-Allow-Headers: Origin,Accept,X-Requested-With,Content-Type,Access
 
 //main page
 router.get('/',function(req,res){
-  res.render('main2');
+  res.render('main');
 });
 router.get('/imgs', function(req, res){
     fs.readFile('D:\CPL-20192-Team9\images\img1.jpg', function(err, data){
@@ -179,7 +179,7 @@ router.get('/predictResult/:cluster_name/:scienceAppName/parameters_values',func
   let c=req.params.cluster_name;
   let p=req.params.scienceAppName;
   let e=req.params.values;
-  let node2r_values='';
+  let node2r_values='[';
 
   console.log(c);
   console.log(p);
@@ -188,8 +188,12 @@ router.get('/predictResult/:cluster_name/:scienceAppName/parameters_values',func
 
   for(let i=0;i<req.query.var.length;i++)
   {
+	node2r_values+='"';
     node2r_values=node2r_values.concat(req.query.var[i]+' ');
-  }
+	node2r_values+='"';
+	if(i < req.query.var.length - 1)
+		node2r_values += ',';
+  } node2r_values += ']';
   //var cmd='Rscript ./apps/api/log_wrapper.R '+req.query.var[0].toString()+' '+req.query.var[1].toString();
   var cmd='Rscript ./apps/api/wrapper.R '+req.params.scienceAppName+" "+node2r_values;
   console.log(cmd);
