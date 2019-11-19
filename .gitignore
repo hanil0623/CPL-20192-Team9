@@ -1,3 +1,7 @@
 
 node_modules
 *.csv
+*.R
+apps/data_control/load_edison.js
+apps/data_control/parser.js
+insert_2018.js
