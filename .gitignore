@@ -3,6 +3,6 @@ node_modules
 *.csv
 *.R
 *.sql
-apps\data_control\load_edison.js
-apps\data_control\parser.js
+apps\\data_control\\load_edison.js
+apps\\data_control\\parser.js
 insert_2018.js
