@@ -18,10 +18,13 @@
 > **DataBase** MongoDB v4.0.12 & MySQL v8.0<br>
 > **Machine Learning** R v3.6.1 & Python v3.6.5<br>
 + **Rules**
- + 모든 코드에 주석을 달 때에는 **해당되는 코드 위쪽에** /**/구문에 이름 이니셜: 주석 형태로 작성바랍니다.<br>
+  + 모든 코드에 주석을 달 때에는 **해당되는 코드 위쪽에** /**/구문에 이름 이니셜: 주석 형태로 작성바랍니다.<br>
  (예시)<pre><code>/* PSH: 이 부분은 출력문입니다 */
  print('Hello world!');
  </code></pre>
+  + **대외비**
+    + wrapper.R를 제외한 R파일(.R)
+    + 모든 데이터셋 파일(.sql, .csv)
 # Keywords
 + Computational Science and Engineering
 + Simulation
