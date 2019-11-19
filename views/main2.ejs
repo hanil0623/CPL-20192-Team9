@@ -28,12 +28,17 @@
              <img src="/img/logo.png">
             </div>
             </a>
-            <div class="navbar-brand col-lg-3">
-                <a href="/spa/predict" class="dropdown-item">Estimation</a>
+			
+			<button class="col-lg-4 my-menu" OnClick="location.href='/spa/predict'">Estimation</button>
+			<button class="col-lg-4 my-menu" OnClick="location.href='/spa/statistics'">Param Statics</button>
+			<!--
+            <div class="navbar-brand col-lg-4 my-menu" OnClick="location.href='/spa/predict'">
+                <a>Estimation</a>
             </div>
-            <div class="navbar-brand col-lg-3">
+            <div class="navbar-brand col-lg-4 my-menu">
                 <a href="/spa/statistics" class="dropdown-item">Param Statics</a>
             </div>
+-->
         </nav>
 		
         <div id="main-background">
@@ -46,7 +51,7 @@
                 </div>
 			</div>
         </div>
-        
+		
         <!-- Bootstrap core JavaScript-->
         <script src="vendor/jquery/jquery.min.js"></script>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
