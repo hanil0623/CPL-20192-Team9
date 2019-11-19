@@ -5,3 +5,40 @@ div.mybox {
 	border-top: 2px solid rgba(0,0,0,.125);
 	text-align:center;
 }
+/*
+html,body {
+	margin: 0;
+    height: 100%;
+    overflow: hidden;
+	background-color: gray;
+}*/
+
+#main-background {
+	width:100%;height:100%;
+	background-image: url('/img/img1.jpg');
+	background-size:contain;
+	background-repeat:no-repeat;
+	position: absolute;
+	border: 50px;
+}
+
+div.main-text-wrapper {
+	width: inherit; height: 100%;
+	padding: 10% 0px;
+}
+
+div.my-textbox {
+	text-align: center;
+}
+
+div.main-text-eng {
+	color:white;
+	font-size:60px;
+	font-family:NotoSansCJKkr;
+}
+
+div.main-text-kor {
+	color:white;
+	font-size:25px;
+	font-family:NotoSansCJKkr
+}
