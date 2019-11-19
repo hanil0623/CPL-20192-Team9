@@ -14,13 +14,20 @@ html,body {
 }*/
 
 #main-background {
-	width:100%;height:100%;
+	width:100vw;height:100vh;
 	background-image: url('/img/img1.jpg');
-	background-size:contain;
+	background-size:cover;
 	background-repeat:no-repeat;
 	position: absolute;
 	border: 50px;
 }
+/*
+#main-background {
+	width : 100 %;
+	height : 0;
+	padding-top : calc (1080 / 1920 * 100 %); 
+	background-image : url ('/img/img1.jpg') center center / cover no-repeat;
+}*/
 
 div.main-text-wrapper {
 	width: inherit; height: 100%;
@@ -41,4 +48,8 @@ div.main-text-kor {
 	color:white;
 	font-size:25px;
 	font-family:NotoSansCJKkr
+}
+
+.sticky-footer {
+    width: 100vw; height: 100vh;
 }
